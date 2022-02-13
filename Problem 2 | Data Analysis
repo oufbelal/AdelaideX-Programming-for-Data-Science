@@ -1,0 +1,98 @@
+size(500,300);
+strokeWeight(10);
+fill(255,255,50)
+rect(0,0,width,height);
+
+//Stage 1----------------------
+float[] allData = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.2, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.2, 8, 7.6, 0, 0, 0, 0, 0, 17.8, 18.6, 0, 0, 13.2, 4.8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.2, 21.6, 0, 0, 20, 2.4, 0, 0, 0, 0, 0, 0, 8, 0.4, 0, 0, 0, 0, 0, 1.2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4.6, 0.2, 0, 0, 0, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.2, 0.2, 0, 0, 0, 0, 0, 0, 4, 0, 1.6, 0, 0.8, 5.2, 0, 0, 0, 0.4, 0.8, 16, 0.6, 4.6, 0.4, 0, 0, 0.6, 0.2, 0, 0, 0.2, 0, 0, 7.2, 0.4, 3.4, 24.2, 2.8, 17, 0, 1.2, 0.4, 0.2, 0.2, 18.4, 0, 0.2, 11.4, 1.6, 3.8, 5.2, 2.4, 1.8, 0, 0, 0, 0, 2.4, 4, 0, 0, 0.6, 3.8, 11.8, 2.6, 20, 0.6, 0, 2.6, 0, 0, 1.6, 2.6, 1.4, 0, 0.2, 37.6, 2.4, 1.6, 0, 0, 6.6, 1.4, 6, 7, 0.6, 0.2, 0, 0, 0, 0, 5, 0, 0.6, 4.2, 0, 11.4, 8.8, 10.4, 0.2, 0, 0, 3.8, 11, 1.8, 0, 0.4, 0, 0, 0, 0, 0.6, 3.6, 8.2, 0, 0, 0, 0, 0, 0.8, 0, 16.8, 7, 0.2, 0, 0, 0, 0, 0, 0, 0, 1.6, 5.8, 1, 0.2, 0.2, 0.4, 1, 0, 0, 0, 1.2, 30.4, 0.2, 0, 0, 6.2, 15.6, 16.6, 0, 0, 2.4, 0.4, 0.4, 1.6, 0, 0, 2.4, 2, 0, 0, 0, 37.8, 12.2, 4.2, 0, 27.6, 11.8, 0, 0, 0, 0, 0, 2, 0.4, 0.8, 0.6, 0, 0, 1.2, 14.2, 4.2, 3.8, 0, 9.4, 0.2, 0, 0, 0, 0, 0, 0, 0, 0, 0.6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 16.4, 1.8, 0, 0, 0, 0, 0, 0, 0, 0.8, 0.2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4.6, 0, 0, 8, 0.8, 0, 0, 0, 0, 0.4, 0, 0, 0.4, 0, 0, 2.2, 0, 0, 0, 0, 0, 0.2, 5.8, 61.2, 3, 0.2, 0}
+var rainDays={};
+
+for (var i = 0; i<365; i++){
+    if(allData[i]>0){
+        rainDays.push(allData[i]);
+    }    
+}
+
+//Stage 2---------------------------
+//Average
+function mean(float[] numbers){
+    float sum = 0;
+    float average=0;
+    for(var i = 0; i<numbers.length; i++){
+        sum+=numbers[i];
+    }
+    average=sum/numbers.length;
+    return average;
+}
+float myAverage=mean(rainDays);
+
+//Median
+function median(numbers){
+    var sortedNumbers={};
+    sortedNumbers = sort(numbers);
+    var median=[];
+    var takeMidlePoint = (numbers.length/2) - 1; //72 
+    if (sortedNumbers.length%2==0){
+        median.push(sortedNumbers[takeMidlePoint]); //2.4
+        if(takeMidlePoint !== takeMidlePoint-1){
+            median.push(sortedNumbers[takeMidlePoint+1])//2.2
+        }
+
+    }
+    else{
+        median.push(sortedNumbers[takeMidlePoint+1]);
+    }
+    return median;
+}
+float myMedian=median(rainDays);
+
+//Standard Deviation
+function standardDeviation(numbers){
+    float squareEachDeviation=0;
+    for(var i = 0; i<numbers.length; i++){
+        squareEachDeviation+=sq(numbers[i]-myAverage);
+    }
+    return sqrt(squareEachDeviation/numbers.length);
+}
+
+var myStandardDeviation = standardDeviation(rainDays);
+
+//Stage 3-------------------------------------------
+//Mode
+fill(0);
+public static int mode(numbers) {
+    int maxValue, maxCount;
+
+    for (int i = 0; i < numbers.length; ++i) {
+        int count = 0;
+        for (int j = 0; j < numbers.length; ++j) {
+            if (numbers[j] == numbers[i]) ++count;
+        }
+        if (count > maxCount) {
+            maxCount = count;
+            maxValue = numbers[i];
+        }
+    }
+
+    return maxValue;
+}
+var myMode= mode(rainDays);
+
+//Print everything----------------------------------------
+//title
+fill(51, 102, 255);
+textSize(33)
+text("Daily Rainfall in Adelaide (2016)", 16,50);
+//Subtitles
+textSize(25)
+fill(255, 80, 80);
+text("Average: ", 80, 100);
+text("Medians: ", 80, 150);
+text("Standard Deviation: ", 80, 200);
+text("Mode: ", 80, 250);
+//Data
+fill(0, 153, 51);
+text(myAverage, 190, 100);//5.7
+text(myMedian,190,150)
+text(myStandardDeviation, 310, 200);
+text(myMode, 160, 250);

@@ -1,0 +1,75 @@
+size(570,800);
+background(90,190,250);
+
+//Stablish random numbers
+var numberTotalNumbers = 40;
+var minNumber = 100;
+var maxNumber = 200;
+//Stablish ranges
+var rangeSmallStart = minNumber;
+var rangeSmallFinish = 133;
+var rangeMediumStart = 134;
+var rangeMediumFinish = 166;
+var rangeLargeStart = 167;
+var rangeLargeFinish = maxNumber;
+
+//Create random numbers
+ArrayList<Integer> numbs = new ArrayList<Integer>();
+function createRandomNumbers (numberTotalNumbers, minNumber, maxNumber){
+    for (var i = 0; i < numberTotalNumbers; i++){
+        int randomNumber = int(random(minNumber,maxNumber));
+        numbs.add(randomNumber);
+    }
+}
+
+function rangesDivision (list, start, end){
+    ArrayList<Integer>  numbersWanted =  new ArrayList<Integer>();
+    for (var i = 0; i <= list.size(); i++){
+        if (list.get(i) >= start && list.get(i) <= end){
+            numbersWanted.add(list.get(i));
+        }
+    }
+    return numbersWanted;
+}
+
+function sumNumbers (list){
+    var sum = 0;
+    for (var i = 0; i < list.size(); i++){
+        sum += list.get(i);
+    }
+    return sum;
+}
+
+function calculateAverage(list){
+    float totalSum = sumNumbers (list);
+    float average = totalSum/list.size();
+    return average; 
+}
+
+createRandomNumbers(numberTotalNumbers, minNumber, maxNumber);
+ ArrayList<Integer>   smallList = rangesDivision (numbs, rangeSmallStart, rangeSmallFinish);
+ ArrayList<Integer>   mediumList = rangesDivision (numbs, rangeMediumStart, rangeMediumFinish);
+ ArrayList<Integer>   largeList = rangesDivision (numbs, rangeLargeStart, rangeLargeFinish);
+ float smallMean = calculateAverage (smallList);
+ float mediumMean = calculateAverage (mediumList);
+ float largeMean = calculateAverage (largeList);
+
+text("Height",45, 30);
+for (int i = 0; i < numberTotalNumbers; i++) {
+  text(numbs.get(i), 50, 50+i*16);
+}
+
+text("Small (main =" + nf(smallMean,0,2) +")" ,125, 30);
+for (int i = 0; i < smallList.size(); i++) {
+  text(smallList.get(i), 150, 50+i*16);
+}
+
+text("Medium (main = " + nf(mediumMean,0,2) +")",260, 30);
+for (int i = 0; i < mediumList.size(); i++) {
+  text(mediumList.get(i), 285, 50+i*16);
+}
+
+text("Large (main = " + nf(largeMean,0,2) +")",415, 30);
+for (int i = 0; i < largeList.size(); i++) {
+  text(largeList.get(i), 440, 50+i*16);
+}

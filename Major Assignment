@@ -1,0 +1,262 @@
+
+size(1000,1000);
+noStroke();
+fill(255,0,0,150)
+rect(0,0,width,height/4);
+fill(255,255,0,200)
+rect(0,height/4,width,height/2);
+fill(255,0,0,150)
+rect(0,height-height/4,width,height-height/4);
+
+//Data------------------------------------------------------
+float[][] data = {{16379, 16522, 17128,	17651},
+                {24417, 24646,	25488,	26328},
+                {19445,	19506,	20381,	20910},
+                {22924,	23439,	24102,	24870},
+                {18761,	18758,	19213,	19867},
+                {19965,	20361,	20951,	21553},
+                {20688,	20877,	21735,	22649},
+                {17557,	17266,	17993,	18591},
+                {25945,	26585,	27608,	28590},
+                {19176,	19656,	20556,	21296},
+                {15280,	15224,	15882,	16369},
+                {19508,	19663,	20484,	21358},
+                {30179,	30637,	31708,	32723},
+                {18122,	18156,	18803,	19411},
+                {27442,	28039,	29053,	29807},
+                {28858,	29514,	30769,	31805},
+                {23726,	24311,	25220,	25692},
+                {18434,	18277,	18844,	19446},
+                {16670,	16674,	17049,	17686}};
+String[] comunidadesAutonomas = {"Andalucía", "Aragón", "Principado de Asturias", 
+                                "Islas Baleares", "Canarias", "Cantabria", 
+                                "Castilla y León", "Castilla-La Mancha", 
+                                "Cataluña", "Comunidad Valenciana", 
+                                "Extremadura", "Galicia", "Comunidad de Madrid", 
+                                "Región de Murcia", "Navarra", "País Vasco",
+                                "La Rioja", "Ceuta", "Melilla"};
+float[] dataMeans = new float [data.length];
+float[] sortedDataMeans = new float [dataMeans.length];
+float[] fiveHighestData= new float[5];
+String[] fiveHighestComunidadesAutonomas = new String[5];
+
+//Calculations-------------------------------------------
+//General function to calculate an average
+function average(float[] numbers) {
+    float sum = 0;
+    float average=0;
+    for (var i = 0; i<numbers.length; i++) {
+        sum+=numbers[i];
+    }
+    average=sum/numbers.length;
+    return average;
+}
+
+//Calculate average of each array
+function calculateEachMean(numbers, source) {
+    for (var i = 0; i < numbers.length; i++) {
+        numbers[i]=average(source[i]);
+    }
+    return numbers;
+}
+dataMeans = calculateEachMean(dataMeans, data);
+
+//Sort that data in other array
+function createSortedData (float [] sortedDataMeans) {
+    for (var i = 0; i < sortedDataMeans.length; i++) {
+        sortedDataMeans[i] = dataMeans[i];
+    }
+    return sortedDataMeans;
+}
+sortedDataMeans = createSortedData (sortedDataMeans).sort();
+
+//Sort the means and take the first five
+function takeFiveHighestMeans(numbers, myData) {
+    myData[0]=numbers[numbers.length-1];
+    myData[1]=numbers[numbers.length-2];
+    myData[2]=numbers[numbers.length-3];
+    myData[3]=numbers[numbers.length-4];
+    myData[4]=numbers[numbers.length-5];
+    
+    return myData;
+}
+fiveHighestData = takeFiveHighestMeans(sortedDataMeans, fiveHighestData);
+
+//Take the name of each of the five comunidadesAutonomas
+function takeFiveHighesComunidadesAutonomas(someNumbers, totalNumbers, someStrings, totalStrings){
+    for( int i = 0; i<someStrings.length; i++) {
+        someStrings[i] = totalStrings[totalNumbers.indexOf(someNumbers[i])];
+    }
+}
+takeFiveHighesComunidadesAutonomas(fiveHighestData, dataMeans, fiveHighestComunidadesAutonomas, comunidadesAutonomas)
+
+//Standard Deviation
+function standardDeviation(numbers, myAverage){
+    float squareEachDeviation=0;
+    for(var i = 0; i<numbers.length; i++){
+        squareEachDeviation+=sq(numbers[i]-myAverage);
+    }
+    return sqrt(squareEachDeviation/numbers.length);
+}
+//Mode
+fill(0);
+public static int mode(numbers) {
+    int maxValue, maxCount;
+    for (int i = 0; i < numbers.length; ++i) {
+        int count = 0;
+        for (int j = 0; j < numbers.length; ++j) {
+            if (numbers[j] == numbers[i]) ++count;
+        }
+        if (count > maxCount && count>1) {
+            maxCount = count;
+            maxValue = numbers[i];
+        }
+    }
+    if (maxValue==0){
+        return "-";
+    }
+    return maxValue;
+}
+
+//Maximum
+function calculateMax(numbers) {
+    int max=numbers[0];
+    for (var i = 0; i<numbers.length; i++) {
+        if (numbers[i] > max) {
+            max=numbers[i];
+        }
+    }
+    return max;
+}
+
+//Minimum
+function calculateMin(numbers) {
+    int min=numbers[0];
+    for (var i = 0; i<numbers.length; i++) {
+        if (numbers[i] < min) {
+            min=numbers[i];
+        }
+    }
+    return min;
+}
+
+//Some variables
+var totalAverage=average(dataMeans);
+var maximum=calculateMax(dataMeans);
+var minimum=calculateMin(dataMeans);
+var standardDeviation=standardDeviation(dataMeans, totalAverage);
+var mode=mode(dataMeans);
+
+//Graphic-----------------------------------------------
+int pointA = 340;
+int pointB = 270;
+int rectWidth = 640;
+int rectHeight = 460;
+
+stroke(0);
+fill(0,0,0,0);
+strokeWeight(2);
+rect(pointA, pointB, rectWidth, rectHeight);
+
+fill(0);
+line(pointA+50, pointB+20, pointA+50, pointB-50+460);
+line(pointA+50, pointB-50+rectHeight, pointA+rectWidth-20, pointB-50+rectHeight);
+
+int widthAvailable = 960-390;//570
+int heightAvailable = 680-290;//390
+int spaceEachHorizontal = widthAvailable/4;
+int spaceEachVertical = heightAvailable/10;
+
+//Vertical variables in the graphic
+String[] verticalVariables = {"24.000","25.000", "26.000", "27.000", "28.000", "29.000", "30.000", "31.000", "32.000", "33.000"};
+for (int i =0;i<verticalVariables.length; i++) {
+    text(verticalVariables[i], pointA+10, 660-spaceEachVertical*i);
+}
+
+//Horizontal variables in the graphic
+int[] horizontalVariables = {2013, 2014, 2015, 2016};
+for (int i =0;i<horizontalVariables.length; i++) {
+    text(horizontalVariables[i], pointA+100+spaceEachHorizontal*i, 700);
+}
+
+function createPointsInGraph(numbers, red, green, blue) {
+    float myPointVertical;
+    float myPointHorizontal;
+    float[] pointsForLines = new float[numbers.length*2];
+    int j=0;
+    for (var i = 0; i<numbers.length; i++) {
+        myPointVertical = 660-spaceEachVertical*((numbers[i]-24000)/1000);
+        myPointHorizontal = pointA+110+spaceEachHorizontal*i;
+        pointsForLines[j] = myPointHorizontal;
+        j++;
+        pointsForLines[j] = myPointVertical;
+        stroke(red, green, blue);
+        strokeWeight(9);
+        point(myPointHorizontal, myPointVertical);
+        j++;
+    }
+    strokeWeight(2);
+    line(pointsForLines[0], pointsForLines[1], pointsForLines[2], pointsForLines[3]);
+    line(pointsForLines[2], pointsForLines[3], pointsForLines[4], pointsForLines[5]);
+    line(pointsForLines[4], pointsForLines[5], pointsForLines[6], pointsForLines[7]);
+}
+
+//Call the function for each five of the cutonomous communities
+fill(255, 102, 0);
+text(fiveHighestComunidadesAutonomas[0], 400, 300);
+createPointsInGraph(data[comunidadesAutonomas.indexOf(fiveHighestComunidadesAutonomas[0])], 255, 102, 0);
+
+fill(0,255,0);
+text(fiveHighestComunidadesAutonomas[1], 530, 300);
+createPointsInGraph(data[comunidadesAutonomas.indexOf(fiveHighestComunidadesAutonomas[1])], 0,255,0);
+
+fill(0,0,255);
+text(fiveHighestComunidadesAutonomas[2], 600, 300);
+createPointsInGraph(data[comunidadesAutonomas.indexOf(fiveHighestComunidadesAutonomas[2])], 0,0, 255);
+
+fill(255,0,0);
+text(fiveHighestComunidadesAutonomas[3], 660, 300);
+createPointsInGraph(data[comunidadesAutonomas.indexOf(fiveHighestComunidadesAutonomas[3])], 255,0, 0);
+
+fill(255, 102, 204);
+text(fiveHighestComunidadesAutonomas[4], 730, 300);
+createPointsInGraph(data[comunidadesAutonomas.indexOf(fiveHighestComunidadesAutonomas[4])],255, 102, 204);
+
+//TEXT-----------------------------------------------
+fill(0);
+textSize(26);
+textAlign(CENTER);
+text("The Five Spanish Regions with the Highest Nominal € GDP per Capita (2013-2016)", width/2, 70);
+textSize(15);
+fill(255,255,0);
+text("Autonomous Communities", 120, 150);
+text("Average", 260, 150);
+text("Total Average:", 120, 860);
+text("Maximum:", 120, 885);
+text("Minimum:", 120, 910);
+text("Standard Deviation:", 120, 935);
+text("Mode:", 120, 960);
+
+fill(0);
+textSize(10);
+text(totalAverage,260,860);
+text(maximum,260,885);
+text(minimum,260,910);
+text(standardDeviation,260,935);
+text(mode,260,960);
+
+for (int i =0; i<comunidadesAutonomas.length; i++) {
+    for (var j = 0; j< fiveHighestData.length; j++) {
+        if (dataMeans[i]==fiveHighestData[j]) {
+            stroke(0,0,255);
+            fill(0,0,0,0);
+            strokeWeight(2);
+            ellipse(260, 190+i*35, 60, 30);
+            fill(0)
+            text(comunidadesAutonomas[i], 120, 190+i*35);
+            text(dataMeans[i], 260, 190+i*35)
+        }
+    }
+    text(comunidadesAutonomas[i], 120, 190+i*35);
+    text(dataMeans[i], 260, 190+i*35)
+}

@@ -1,0 +1,44 @@
+size(300,300);
+background(100,125,245);
+x=width/5;
+y=height/8;
+ 
+ for(i=x; i<width-x; i+=x){
+     for(j=y; j<height-y; j+=y){
+         rect(i,j,x,y);
+     }
+ }
+ 
+fill(0);
+textSize(12);
+textAlign(CENTER,CENTER);
+text("Test Case", x*1.5, y*1.5);
+text("Output", x*2.5, y*1.5);
+text("Expected", x*3.5, y*1.35);
+text("output", x*3.5, y*1.7);
+textSize(20);
+text(7, x*3.5, y*2.5);
+text(0, x*3.5, y*3.5);
+text(6, x*3.5, y*4.5);
+text(11, x*3.5, y*5.5);
+text(16, x*3.5, y*6.5);
+
+//CODE:
+int[] numbers = new int[]{-7,0,3,10,15};
+int output; 
+down=1.5;
+
+for(N : numbers){
+    if(N < 0){
+    	output = N * -1;
+    }
+    else if(N < 10){
+    	output = N * 2;
+    }
+    else{
+    	output = N + 1;
+    }
+    down++
+    text(output, x*2.5, y*down);
+    text(N, x*1.5, y*down);
+}

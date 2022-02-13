@@ -1,0 +1,50 @@
+size(600,300);
+background(100,160,250);
+
+//PART 1------------------------------------
+int randomNumber = 25;
+
+ArrayList<Character> chars = new ArrayList<Character>();
+void createRandomCharacters (){
+    for (var i = 0; i < randomNumber; i++){
+        int randomCharacter = char(int(random(97,122)));
+        chars.add(randomCharacter);
+    }
+}
+
+//Print part 1
+createRandomCharacters ();
+text("Part 1: Variable Size Array (number of characters " + randomNumber + "):", 10, 55);
+for (var i = 0; i < randomNumber; i++){
+    text(chars.get(i), 15+i*19, 80);
+}
+
+//PART 2------------------------------------
+String myString= new String();
+void combine (ArrayList<Character> list){
+    for (var i = list.size()-1; i >= 0  ; i--){
+        myString = concat(myString,list.get(i));
+    }
+}
+
+//Print part 2
+combine(chars);
+text("Part 2: Reverse String", 10, 140);
+text(myString, 10, 165);
+
+//PART 3------------------------------------
+void shuffleRandomCharacters(){
+    for (var i = randomNumber-1; i >=0; i--){
+        int randomPosition = int(random(0,i+1));
+        char aux = chars.get(i);
+        chars.set(i, chars.get(randomPosition));
+        chars.set(randomPosition, aux);
+    }
+}
+
+//Print part 3
+shuffleRandomCharacters()
+text("Part 3: Random Position", 10, 225);
+for (var i = 0; i < randomNumber; i++){
+    text(chars.get(i), 15+i*19, 250);
+}

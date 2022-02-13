@@ -1,0 +1,65 @@
+size(300, 200);
+background(255,100,255);
+int x = width/11;
+int y = height/16;
+A= x/3;
+B= y/2;
+rectMode(CORNERS);
+fill(255,200,255);
+strokeWeight(3);
+rect(y, y, width-y , height-y);
+
+strokeWeight(2);
+line(y*2, y*2, y*2, height-y*2);
+line(y*2, height-y*2, width-y*2, y*14);
+
+rectMode(CORNERS);
+strokeWeight(0.5);
+base=y*14;
+h = y;
+offset=2;
+green= 20;
+fill(0,green,0)
+rect(x*offset, base-h, x*offset+A, base);
+
+h=h*2;
+offset=offset+1;
+green= green+30;
+fill(0,green,0);
+rect(x*offset,base-h, x*offset+A, base);
+
+h=h*1.7;
+offset=offset+1;
+green= green+30;
+fill(0,green,0);
+rect(x*offset, base-h, x*offset+A, base);
+
+h=h*1.5;
+offset=offset+1;
+green= green+30;
+fill(0,green,0);
+rect(x*offset, base-h, x*offset+A, base);
+
+h=h*1.3;
+offset=offset+1;
+green= green+30;
+fill(0,green,0);
+rect(x*offset, base-h, x*offset+A, base);
+
+h=h*1.2;
+offset=offset+1;
+green= green+30;
+fill(0,green,0);
+rect(x*offset, base-h, x*offset+A, base);
+
+h=h*1.2;
+offset=offset+1;
+green= green+30;
+fill(0,green,0);
+rect(x*offset, base-h, x*offset+A, base);
+
+h=h*1.2;
+offset=offset+1;
+green= green+30;
+fill(0,green,0);
+rect(x*offset, base-h, x*offset+A, base);

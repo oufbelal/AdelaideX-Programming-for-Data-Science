@@ -1,0 +1,167 @@
+size(500,900);
+background(0, 102, 0);
+
+//Stage 1-------------------------------------------------
+
+//Write the data
+float[][] data = {{7.2, 7.5, 7.6, 7.5, 7.5, 7.4, 7.1, 7.0, 7.0, 6.9, 6.9, 7.1, 7.2, 7.3, 7.1, 7.1, 7.0, 7.2, 7.3, 7.3},
+                   {7.4, 7.4, 7.5, 7.3, 7.6, 7.5, 7.5, 7.4, 7.3, 7.3, 7.2, 7.4, 7.5, 7.5, 7.5, 7.4, 7.2, 7.3, 7.5, 7.6},
+                   {7.4, 7.5, 7.5, 7.6, 7.6, 7.5, 7.4, 7.5, 7.8, 7.5, 7.5, 7.6, 7.8, 7.8, 7.4, 7.8, 7.9, 7.4, 7.5, 7.5}};
+String[] titles = {"Time", "Experiment 1", "Experiment 2", "Experiment 3"};
+
+//Print the numbers
+textAlign(CENTER);
+for (var i = 0; i<data.length; i++){
+    for (var j = 0; j<data[i].length; j++){
+        text(data[i][j], 170+[i]*120,100+[j]*20);
+    }
+}
+
+//Print main title
+textAlign(LEFT);
+fill(0,255,255);
+textSize(22)
+text("Measuring the pH level of a soil solution over time", 8,40);
+
+//Print time numbers
+fill(255, 255, 0);
+textSize(15);
+for (var x = 0; x<=95; x+=5){
+    text(x, 70,100+[x]*4);
+}
+
+//Print table headers
+text(titles[0],60,70);
+text(titles[1],125,70);
+text(titles[2],245,70);
+text(titles[3],360,70);
+
+//Stage 2--------------------------------------------------
+
+function average(float[] numbers){
+    float sum = 0;
+    float average=0;
+    for(var i = 0; i<numbers.length; i++){
+        sum+=numbers[i];
+    }
+    average=sum/numbers.length;
+    return average;
+}
+
+//Calculate average per experiment
+firstAverage=average(data[0]);
+secondAverage=average(data[1]);
+thirdAverage=average(data[2]);
+
+//Calculate total average
+int allAverages[]={firstAverage, secondAverage, thirdAverage};
+totalAverage=average(allAverages);
+
+function calculateMax(numbers){
+    int max=numbers[0][0];
+    for (var i = 0; i<numbers.length; i++){
+        for (var j = 0; j<numbers[i].length; j++){
+            if (numbers[i][j] > max){
+                max=numbers[i][j];
+            }
+        }
+    }
+    return max;
+}
+function calculateMin(numbers){
+    int min=numbers[0][0];
+    for (var i = 0; i<numbers.length; i++){
+        for (var j = 0; j<numbers[i].length; j++){
+            if (numbers[i][j] < min){
+                min=numbers[i][j];
+            }
+        }
+    }
+    return min;
+}
+
+//Use previous functions to get maximum and minimum
+int maximum = calculateMax(data);
+int minimum = calculateMin(data);
+
+//Print averages, max and min
+text("Average", 55, 510);
+text("Maximum: ", 185, 540);
+text("Minimum: ", 55, 540);
+textAlign(CENTER);
+text("Total Average:", 365,540)
+fill(0, 255, 255);
+textAlign(LEFT);;
+text(firstAverage, 150,510);
+text(secondAverage, 270,510);
+text(thirdAverage, 390,510);
+text(totalAverage, 420,540);
+text(maximum, 260, 540);
+text(minimum, 125, 540);
+
+//Stage 3---------------------------------------------
+
+//Square that contains the histogram
+fill(204, 255, 153);
+rectMode(CENTER);
+rect(250,740,480,300);
+
+//vertical numbers
+fill(255, 0, 10);
+textSize(11);
+String[] verticalNumbers={"7.9", "7.7", "7.5", "7.3", "7.1", "6.9"};
+for (var i = 0; i<verticalNumbers.length;i++){
+    text(verticalNumbers[i], 12,620+i*42);
+}
+
+//Horizontal lines
+for (var i = 0; i<verticalNumbers.length;i++){
+    stroke(0, 102, 0,90);
+    line(30, 615+i*42,470, 615+i*42);
+}
+stroke(0);
+
+//horizontal variables 
+var horizontalSpace = (width - (width-470)*2) - 10; //430 available
+var spaceEachCluster = horizontalSpace/data[0].length; //21.5
+var spaceEachPiece = spaceEachCluster/4; //5.375
+var button = 870;
+
+//vertical variables
+var verticalSpace=870-610;//260 available 
+var eachZeroPointOne=verticalSpace/12; //21.66  
+var startCluster=35;
+
+strokeWeight(1);
+rectMode(CORNERS);
+
+function printCluster(number){
+    var red=255;
+    var green=255;
+    var blue=0;
+    var i=startCluster+(number*spaceEachCluster);
+    var j=i+spaceEachPiece;
+    for(var y=0; y<data.length;y++){
+        var x = data[y][number];
+        var calculatePosition = (x-6.7)*10*eachZeroPointOne;
+        fill(red,green,blue);
+        rect(i, button, j,button-calculatePosition);
+        green-=100;
+        i+=spaceEachPiece;
+        j=i+spaceEachPiece;
+    }
+}
+
+function sendToPrintEachCluster(){
+    for(var i=0; i<data[0].length;i++){
+        printCluster(i)
+    }
+}
+
+//Call last function to print each cluster
+sendToPrintEachCluster()
+
+//Print horizontal and vertical lines
+strokeWeight(2);
+line(30,610,30,880);
+line(20,870,470,870);

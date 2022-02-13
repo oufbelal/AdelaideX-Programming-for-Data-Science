@@ -1,0 +1,50 @@
+size(400,400);
+background(153,255,153);
+stroke(55,255,200);
+strokeWeight(1);
+fill(180,255,180);
+for(int i=0; i<500; i=i+35){
+    for (int j=0; j<500; j=j+35){
+        ellipse(i,j,25,25);
+        
+    }
+}
+stroke(0,150,0);
+strokeWeight(3);
+ellipse(200,200,200,200);
+
+fill(0,0,0);
+textSize(50);
+text("Turism in Spain", 27,70);
+
+textSize(15);
+fill(0,0,255);
+text("Cataluña= 25.9%", 280,130);
+arc(200,200,200,200,radians(266.76),radians(360));
+
+
+fill(204,0,102);
+text("Canarias= 17.7%", 10, 125);
+arc(200,200,200,200,radians(203.04),radians(266.76));
+
+fill(255,255,0);
+text("Baleares=17.5%", 1,220);
+arc(200,200,200,200,radians(140.04),radians(203.04));
+
+fill(127,0,255);
+text("Andalucía= 13.1%", 45, 310);
+beginShape();
+arc(200,200,200,200,radians(92.88),radians(140.04));
+
+fill(255,0,10);
+text("Comunidad Valenciana= 9.6%", 200, 315);
+arc(200,200,200,200,radians(58.32),radians(92.88));
+
+fill(255,128,0);
+text("Madrid=7%", 275,285);
+arc(200,200,200,200,radians(33.12),radians(58.32));
+
+
+fill(153,0,153);
+text("Others=9.2%", 300, 230);
+arc(200,200,200,200,radians(0),radians(33.12));

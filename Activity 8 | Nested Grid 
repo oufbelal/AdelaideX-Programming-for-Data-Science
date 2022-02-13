@@ -1,0 +1,49 @@
+size(300,300);
+background(200,200,255);
+strokeWeight(0.25);
+for (int x=25; x<275; x=x+25){
+    for(int y=25; y<275; y=y+25){
+        rect(x,y,25,25);
+    }
+}
+
+strokeWeight(3);
+line(height/2,25, height/2, width-25);
+line(25, width/2, height-25, width/2);
+strokeWeight(10)
+point(height/2, width/2);
+
+
+fill(0)
+text("1", width/2+17, height/2-3);
+text("2", width/2+17+25, height/2-3);
+text("3", width/2+17+50, height/2-3);
+text("4", width/2+17+75, height/2-3);
+text("-1", width/2-25, height/2-3);
+text("-2", width/2-50, height/2-3);
+text("-3", width/2-75, height/2-3);
+text("-4", width/2-100, height/2-3);
+
+text("1", height/2+3, height/2-20);
+text("2", height/2+3, height/2-20-25);
+text("3", height/2+3, height/2-20-50);
+text("4", height/2+3, height/2-20-75);
+text("-1", height/2+3, height/2+20);
+text("-2", height/2+3, height/2+20+25);
+text("-3", height/2+3, height/2+20+50);
+text("-4", height/2+3, height/2+20+75);
+
+text("X", width-15, height/2+4);
+text("Y", width/2-4, 15);
+
+strokeWeight(2.5);
+a=25;
+b=7;
+line(a, height/2, a+b, height/2-b);
+line(a, height/2, a+b, height/2+b);
+line(width-a, height/2, width-a-b, height/2-b);
+line(width-a, height/2, width-a-b, height/2+b);
+line(width/2, a, width/2-b, a+b);
+line(width/2, a, width/2+b, a+b);
+line(width/2, height-a, width/2-b, height-a-b);
+line(width/2, height-a, width/2+b, height-a-b);

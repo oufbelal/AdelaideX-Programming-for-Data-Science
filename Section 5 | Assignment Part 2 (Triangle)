@@ -1,0 +1,25 @@
+size(500,500);
+background(255,255,0);
+number=15;
+int count=1;
+int x= width/number;
+int y= height/number;
+int column=0;
+for(i=y/2;i<height;i+=y){
+    for(j=x/2;j<width;j+=x){
+        if (column%2==0){
+            fill(0,0,255);
+        }
+        else{
+            fill(255,0,0);
+        }
+        ellipse(j,i,y,x);
+        fill(0,0,0);
+        textAlign(CENTER,CENTER);
+        text(count,j,i);
+        count++;
+    }
+    column++;   
+    width=width-x;
+
+}

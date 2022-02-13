@@ -1,0 +1,34 @@
+size(350,200);
+background(100,250,250);
+
+//Price per color
+var priceEachBlue = 1.23;
+var priceEachRed = 0.86;
+var priceEachGreen = 3.40;
+
+//Calculate total
+void calculateFinalPrice(numberBlue, numberRed, numberGreen){
+    var priceTotalBlue = calculateBlue(numberBlue);
+    var priceTotalRed = calculateRed(numberRed);
+    var priceTotalGreen = calculateGreen(numberGreen);
+    var finalPrice = priceTotalBlue + priceTotalRed + priceTotalGreen;
+    return finalPrice;
+}
+
+//Calculate total per color
+void calculateBlue (numberOfBlue){
+    return numberOfBlue * priceEachBlue;
+}
+void calculateRed (numberOfRed){
+    return numberOfRed * priceEachRed;
+}
+void calculateGreen (numberOfGreen){
+    return numberOfGreen * priceEachGreen;
+}
+
+//Text
+fill(0);
+text("Price of 2 blue and 1 red= " + calculateFinalPrice(2,1,0) + " $", 10, 50);
+text("Price of 5 blue and 1 green= " + calculateFinalPrice(5,0,1) + " $", 10, 70)
+text("Price of 4 blue, 1 red and 6 green= " + calculateFinalPrice(4,1,6) + " $", 10, 90)
+text("Price of 800 blue, 1000 red and 5679 green= " + calculateFinalPrice(800,1000,5679) + " $", 10, 110)

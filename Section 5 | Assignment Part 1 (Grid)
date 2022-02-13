@@ -1,0 +1,23 @@
+size(500,500);
+number=15;
+int count=1;
+int x= width/number;
+int y= height/number;
+int column=0;
+for(i=x/2;i<width;i+=x){
+    for(j=y/2;j<height;j+=y){
+        if (column%2==0){
+            fill(0,0,255);
+        }
+        else{
+            fill(255,0,0);
+        }
+        ellipse(i,j,x,y);
+        fill(0,0,0);
+        textAlign(CENTER,CENTER);
+        text(count,i,j);
+        count++;
+        
+    }
+    column++;
+}

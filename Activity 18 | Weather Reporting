@@ -1,0 +1,65 @@
+size (500,500);
+background(255,153,51);
+
+//title
+textAlign(CENTER);
+textSize(19);
+text("Ranges Maximum Temperature April 2017 Adelaide", 250, 30);
+
+//creation of the table
+horizontaldivision = width/4;
+verticadivision = height/7;
+for (i = horizontaldivision; i<horizontaldivision*3; i+=horizontaldivision){
+    for (j = verticadivision; j<verticadivision*6; j+=verticadivision){
+        rect(i,j,horizontaldivision,verticadivision)
+        
+    }
+}
+
+// Names of the ranges
+string [] ranges = {"0-10 degrees", "11-20 degrees", "21-30 degrees", "31-40 degrees", "41-50 degrees"};
+
+//values of maximum temperature
+float [] maxTemp = {38.6, 36.2, 34.0, 32.5, 26.9, 28.8, 32.2, 33.0, 32.9, 31.5, 30.7, 
+                21.7, 23.4, 30.2, 35.4, 23.3, 27.3, 33.5, 34.6, 34.4, 29.9, 22.6, 
+                29.0, 32.5, 27.7, 33.3, 23.9, 24.6, 22.7, 19.7, 20.1};
+
+//counter starting with 0
+firstRange = 0;
+secondRange = 0;
+thirdRange = 0;
+fourthRange = 0;
+fifthRange = 0;
+
+//Counting according to each range
+for (k=0; k<maxTemp.length; k++){
+    if (maxTemp[k] < 11){
+        firstRange+=1;
+    }
+    else if (maxTemp[k] < 21){
+        secondRange+=1;
+    }
+    else if (maxTemp[k] < 31){
+        thirdRange+=1;
+    }
+    else if (maxTemp[k] < 41){
+        fourthRange+=1;
+    }
+    else{
+        fifthRange+=1;
+    }
+}
+
+//print first column (ranges values)
+fill(0);
+textSize(15);
+for (r = 0; r < ranges.length; r++){
+    text(ranges[r], horizontaldivision*1.5 , verticadivision*(1.5+r))
+}
+
+//print second column counter
+text(firstRange, horizontaldivision*2.5 , verticadivision*1.5);
+text(secondRange, horizontaldivision*2.5 , verticadivision*2.5);
+text(thirdRange, horizontaldivision*2.5 , verticadivision*3.5);
+text(fourthRange, horizontaldivision*2.5 , verticadivision*4.5);
+text(fifthRange, horizontaldivision*2.5 , verticadivision*5.5);

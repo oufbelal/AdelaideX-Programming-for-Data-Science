@@ -1,0 +1,18 @@
+size(250,250);
+background(204,0,50);
+strokeWeight(0.7);
+extension= 14;
+float a=width/(extension+2);
+float b=height/(extension+2);
+    for (int x=0; x<extension; x++){
+        for(int y=0; y<extension; y++){
+        stroke(0,102,0);
+            rect(a*(x+1),b*(y+1),a,b);
+    }
+}
+
+strokeWeight(3);
+line(a, height/2, width-a, height/2);
+line(width/2, b, width/2, height-b);
+strokeWeight(10)
+point(width/2, height/2);

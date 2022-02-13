@@ -1,0 +1,46 @@
+size (400, 400);
+background(200,200,250);
+
+int sz = 20;
+
+ArrayList<Integer> age = new ArrayList<Integer>();
+ArrayList<Float> height = new ArrayList<Float>();
+
+for (int i = 0; i < sz; i++) {
+  int randomAge = int(random(18,50));
+  int randomHeight = float(random(1.5,2.1));
+  age.add(randomAge);
+  height.add(randomHeight);
+}
+for (int i = 0; i < sz; i++) {
+  text(age.get(i), 50, 50+i*16);
+  text(height.get(i), 100, 50+i*16);   
+}
+fill(0);
+text("Age", 50, 30);
+text("Height", 100, 30);
+fill(255);
+text("Age", 250, 30);
+text("Height", 300, 30);
+
+//Sort
+int minIndex;
+for (i = 0; i < sz; i++){
+    minIndex = i;
+    for (j = i+1; j < sz; j++){
+        if (age.get(j) < age.get(minIndex)){
+            minIndex = j;
+        }
+    }
+    int aux = age.get(i);
+    age.set(i,age.get(minIndex));
+    age.set(minIndex,aux);
+    aux = height.get(i);
+    height.set(i,height.get(minIndex));
+    height.set(minIndex,aux);
+}
+for (int i = 0; i < sz; i++) {
+  fill(0);
+  text(age.get(i), 250, 50+i*16);
+  text(height.get(i), 300, 50+i*16);   
+}

@@ -1,0 +1,38 @@
+size (500,500);
+background(255,153,51);
+//title
+textAlign(CENTER);
+textSize(19);
+text("Random Temperature", 250, 20);
+
+//creation of the table
+int r = 18;
+int c = 3;
+horizontaldivision = width/(c+1);
+verticadivision = height/(r+1);
+for (i = horizontaldivision; i<horizontaldivision*c; i+=horizontaldivision){
+    for (j = verticadivision; j<verticadivision*r; j+=verticadivision){
+        rect(i,j,horizontaldivision,verticadivision);
+    }
+}
+int sz = 100;
+
+ArrayList<Integer> temperatures = new ArrayList<Integer>();
+int counter = new int[17];
+int sum = 0;
+for (int i = 0; i < sz; i++) {
+  int randomTemperature = int(random(4,21));
+  temperatures.add(randomTemperature);
+  counter[randomTemperature-4]++;
+  sum += randomTemperature;
+}
+
+
+//print first column (ranges values)
+fill(0);
+textSize(15);
+for (r = 4; r <= 20; r++){
+    text(r, horizontaldivision*1.5 , verticadivision*(1.7+r-4))
+    text(counter[r-4], horizontaldivision*2.5 , verticadivision*(1.7+r-4))
+}
+text("Sum: " + sum, horizontaldivision*0.5 , verticadivision*(1.7+r-4))

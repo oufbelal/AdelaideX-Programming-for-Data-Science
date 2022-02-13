@@ -1,0 +1,214 @@
+size(400,400);
+background(222,150,80);
+int x = width/20;
+
+rectMode(CORNERS);
+strokeWeight(0.1);
+green=130;
+fill(0,green,255);
+rect(x, x*3, x*4, x*5);
+
+A=3;
+green=green+25;
+fill(0,green,255)
+rect(x+x*A, x*3, x*4+x*A, x*5);
+A=A+3;
+green=green+25;
+fill(0,green,255);
+rect(x+x*A, x*3, x*4+x*A, x*5);
+A=A+3;
+green=green+25;
+fill(0,green,255);
+rect(x+x*A, x*3, x*4+x*A, x*5);
+A=A+3;
+green=green+25;
+fill(0,green,255);
+rect(x+x*A, x*3, x*4+x*A, x*5);
+A=A+3;
+green=green+25;
+fill(0,green,255);
+rect(x+x*A, x*3, x*4+x*A, x*5);
+
+green=255;
+fill(0,green,255);
+rect(x,x*5, x*4,x*7);
+A=3;
+green=green-25;
+fill(0,green,255);
+rect(x+x*A, x*5, x*4+x*A, x*7);
+A=A+3;
+green=green-25;
+fill(0,green,255);
+rect(x+x*A, x*5, x*4+x*A, x*7);
+A=A+3;
+green=green-25;
+fill(0,green,255);
+rect(x+x*A, x*5, x*4+x*A, x*7);
+A=A+3;
+green=green-25;
+fill(0,green,255);
+rect(x+x*A, x*5, x*4+x*A, x*7);
+A=A+3;
+green=green-25;
+fill(0,green,255);
+rect(x+x*A, x*5, x*4+x*A, x*7);
+
+green=130;
+fill(0,green,255);
+rect(x, x*7, x*4, x*9);
+A=3;
+green=green+25;
+fill(0,green,255)
+rect(x+x*A, x*7, x*4+x*A, x*9);
+A=A+3;
+green=green+25;
+fill(0,green,255)
+rect(x+x*A, x*7, x*4+x*A, x*9);
+A=A+3;
+green=green+25;
+fill(0,green,255)
+rect(x+x*A, x*7, x*4+x*A, x*9);
+A=A+3;
+green=green+25;
+fill(0,green,255)
+rect(x+x*A, x*7, x*4+x*A, x*9);
+A=A+3;
+green=green+25;
+fill(0,green,255)
+rect(x+x*A, x*7, x*4+x*A, x*9);
+
+rect(x,x*9,x*4,x*11);
+A=3;
+green=green-25;
+fill(0,green,255)
+rect(x+x*A, x*9, x*4+x*A, x*11);
+A=A+3;
+green=green-25;
+fill(0,green,255)
+rect(x+x*A, x*9, x*4+x*A, x*11);
+A=A+3;
+green=green-25;
+fill(0,green,255)
+rect(x+x*A, x*9, x*4+x*A, x*11);
+A=A+3;
+green=green-25;
+fill(0,green,255)
+rect(x+x*A, x*9, x*4+x*A, x*11);
+A=A+3;
+green=green-25;
+fill(0,green,255)
+rect(x+x*A, x*9, x*4+x*A, x*11);
+
+rect(x, x*11, x*4,x*13);
+A=3;
+green=green+25;
+fill(0,green,255)
+rect(x+x*A, x*11, x*4+x*A, x*13);
+A=A+3;
+green=green+25;
+fill(0,green,255)
+rect(x+x*A, x*11, x*4+x*A, x*13);
+A=A+3;
+green=green+25;
+fill(0,green,255)
+rect(x+x*A, x*11, x*4+x*A, x*13);
+A=A+3;
+green=green+25;
+fill(0,green,255)
+rect(x+x*A, x*11, x*4+x*A, x*13);
+A=A+3;
+green=green+25;
+fill(0,green,255)
+rect(x+x*A, x*11, x*4+x*A, x*13);
+
+rect(x,x*13,x*4,x*15);
+A=3;
+green=green-25;
+fill(0,green,255)
+rect(x+x*A, x*13, x*4+x*A, x*15);
+A=A+3;
+green=green-25;
+fill(0,green,255)
+rect(x+x*A, x*13, x*4+x*A, x*15);
+A=A+3;
+green=green-25;
+fill(0,green,255)
+rect(x+x*A, x*13, x*4+x*A, x*15);
+A=A+3;
+green=green-25;
+fill(0,green,255)
+rect(x+x*A, x*13, x*4+x*A, x*15);
+A=A+3;
+green=green-25;
+fill(0,green,255)
+rect(x+x*A, x*13, x*4+x*A, x*15);
+
+rect(x,x*15,x*4,x*17);
+A=3;
+green=green+25;
+fill(0,green,255)
+rect(x+x*A, x*15, x*4+x*A, x*17);
+A=A+3;
+green=green+25;
+fill(0,green,255)
+rect(x+x*A, x*15, x*4+x*A, x*17);
+A=A+3;
+green=green+25;
+fill(0,green,255)
+rect(x+x*A, x*15, x*4+x*A, x*17);
+A=A+3;
+green=green+25;
+fill(0,green,255)
+rect(x+x*A, x*15, x*4+x*A, x*17);
+A=A+3;
+green=green+25;
+fill(0,green,255)
+rect(x+x*A, x*15, x*4+x*A, x*17);
+
+B= 3;
+strokeWeight(B);
+fill(255,255,255);
+ellipseMode(CENTER);
+ellipse(x*7,x*10,x*9.5,x*9.5);
+strokeWeight(0.8);
+ellipse(x*7,x*10,x*8.5, x*8.5);
+fill(250,255,80)
+strokeWeight(B);
+ellipse(x*7,x*10,x*6,x*6);
+
+fill(255,255,255);
+strokeWeight(0.5);
+triangle(x*12.5, x*6, x*12.5,x*14,x*15.5,x*10);
+
+strokeWeight(3*3);
+line(x*14, x*9, x*14, x*13.5);
+
+fill(0);
+ellipse(x*14,x*8,x,x*2);
+
+strokeWeight(B/2)
+fill(204,0,102);
+ellipse(x*17,x*5,x*3,x*3)
+
+strokeWeight(B/3);
+line(x*7,x*10, x*7.5,x*10.5);
+line(x*8, x*11, x*8, x*10.5);
+line(x*6, x*9, x*6.5, x*8);
+
+strokeWeight(0.4);
+fill(255,222,173);
+ellipse(x*6,x*11, x*1.5, x);
+ellipse(x*7.7,x*9, x, x);
+ellipse(x*9,x*11, x, x);
+fill(154,205,50);
+ellipse(x*5,x*9, x/2,x/2);
+ellipse(x*6,x*8, x/2,x/2);
+ellipse(x*9,x*9, x/2,x/2);
+ellipse(x*6,x*12.3, x/2,x/2);
+ellipse(x*6,x*10, x/2,x/2);
+ellipse(x*8,x*10, x/2,x/2);
+ellipse(x*7.5,x*12, x/2,x/2);
+
+fill(255,0,0);
+rect(x*4.8,x*11, x*5,x*11.7);
+rect(x*7, x*7.5, x*8, x*7.7)

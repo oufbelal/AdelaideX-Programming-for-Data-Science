@@ -1,0 +1,94 @@
+size(250,250);
+background(153,255,204);
+x= width/12;
+y= height/12;
+sum=0;
+
+strokeWeight(0.2);
+for (int a=x; a<x*11; a=a+x){
+    for (int b=y; b<y*11; b=b+y){
+     rect(a,b,x,y);
+    }
+}
+
+strokeWeight(1);
+size=3;
+blue= size*30
+fill(0,0,blue);
+rect(x,y,x*size,y);
+down=y+y;
+sum=sum+size;
+
+size=9;
+blue= size*30
+fill(0,0,blue);
+rect(x,down,x*size,y);
+down=down+y;
+sum=sum+size;
+
+size=8;
+blue= size*30
+fill(0,0,blue);
+rect(x,down,x*size,y);
+down=down+y;
+sum=sum+size;
+
+size=6;
+blue= size*30
+fill(0,0,blue);
+rect(x,down,x*size,y);
+down=down+y;
+sum=sum+size;
+
+size=2;
+blue= size*30
+fill(0,0,blue);
+rect(x,down,x*size,y);
+down=down+y;
+sum=sum+size;
+
+size=8;
+blue= size*30
+fill(0,0,blue);
+rect(x,down,x*size,y);
+down=down+y;
+sum=sum+size;
+
+size=5;
+blue= size*30
+fill(0,0,blue);
+rect(x,down,x*size,y);
+down=down+y;
+sum=sum+size;
+
+size=7;
+blue= size*30
+fill(0,0,blue);
+rect(x,down,x*size,y);
+down=down+y;
+sum=sum+size;
+
+size=10;
+blue= size*30
+fill(0,0,blue);
+rect(x,down,x*size,y);
+down=down+y;
+sum=sum+size;
+
+size=5;
+blue= size*30
+fill(0,0,blue);
+rect(x,down,x*size,y);
+down=down+y;
+sum=sum+size;
+
+strokeWeight(3);
+line(x,y/1.5,x,height-y/1.5);
+line(y/1.5,height-y, width-x/1.5, height-y);
+
+stroke(255,0,0);
+float mean=sum/10.0;
+fill(255,0,0);
+line(x+x*mean, y, x+x*mean, height-y);
+text("Mean=", x*4,y/1.5);
+text(mean, x*6,y/1.5);

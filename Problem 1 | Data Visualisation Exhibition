@@ -1,0 +1,71 @@
+size(500,900);
+background(250,50,90);
+
+//Stage 1
+int[] numbs ={408, 1752, 4364, 5618, 1437, 1275, 421, 
+                            74, 213, 73, 1219, 390, 766};
+
+String[] names = {"General public services", 
+                            "Public order and safety", 
+                            "Education", 
+                            "Health", 
+                            "Social security and welfare", 
+                            "Housing and community amenities", 
+                            "Recreation and culture", 
+                            "Fuel and energy", 
+                            "Agriculture, forestry, fishing and hunting", 
+                            "Mining and mineral resources other than fuels", 
+                            "Transport and communications", 
+                            "Other economic affairs",
+                            "Other purposes"};
+fill(255,255,0);
+textSize(21);
+text("General government sector grant revenue ($million)", 10,25);
+fill(255);
+textSize(15);
+for(var i=0; i<numbs.length; i++){
+    text(numbs[i], 410, 70+i*25);
+}
+stroke(255,255,0);
+strokeWeight(1.5);
+for(var i=0; i<names.length; i++){
+    text(names[i],65, 70+i*25);
+    line(40,80+25*[i],460,80+25*[i])
+}
+
+
+//Stage 2
+int sumArray(int[] values){
+    int sum;
+    for (var i = 0; i <numbs.length; i++){
+        sum+=numbs[i];
+    }
+    return sum;
+}
+int resultSum = sumArray(numbs);
+textSize(20);
+text("Total", 50,405)
+text(resultSum,400,405);
+strokeWeight(4);
+line(30,80+25*[12],470,80+25*[12]);
+line(390,50,390,415);
+
+
+//Stage 3
+ellipse(250,650,400,400);
+strokeWeight(0.1);
+function paintPieChart(){
+    var finish;
+    var start=0;
+    for(var i=0; i<numbs.length; i++){
+        int r = int(random(0,255));
+        int g = int(random(0,255));
+        int b = int(random(0,255));
+        finish += (numbs[i]/resultSum)*360;
+        fill(r,g,b);
+        arc(250,650,400,400,radians(start),radians(finish));
+        start=finish;
+        ellipse(50,65+25*[i],13,13)
+    }
+}
+paintPieChart();

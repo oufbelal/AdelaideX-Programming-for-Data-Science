@@ -1,0 +1,30 @@
+size (400, 400);
+background(200,200,250);
+
+int sz = 20;
+
+ArrayList<Integer> numbs = new ArrayList<Integer>();
+
+void addValues(ArrayList<int> list, int valuesToAdd){
+    for (int i = 0; i < valuesToAdd; i++) {
+      int randomAge = int(random(18,50));
+      numbs.add(randomAge);
+    }
+}
+
+int sum(ArrayList<int> array){
+    int result = 0;
+    for(i=0; i<sz; i++){
+        result += array.get(i);
+    }
+    return result;
+}
+addValues(numbs, sz);
+
+for (int i = 0; i < sz; i++) {
+  text(numbs.get(i), 50, 50+i*16);
+}
+fill(0);
+text("Age", 50, 30);
+text("Sum", 100, 30);
+text(sum(numbs), 100, 50);
